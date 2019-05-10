@@ -1,24 +1,20 @@
 #include <stdio.h>
 #include <string.h>
-void puts_m(const char *s) {
-    int i;
-    for(i=0; i<strlen(s); i++) {
-        if (s[i] == 10) {
-            putchar(92);
-            putchar(110);
-        } else {
-            putchar(s[i]);
-        }
+
+int main(int argc, char **argv) {
+    FILE *input;
+    char c;
+    char p[1250];
+    int i = 0;
+
+    if (argc != 2) return 0;
+    input = fopen(argv[1], "r");
+    printf("char s[] = {\n");
+    for ( c = fgetc(input); c != EOF; c = fgetc(input)) {
+        printf("\t%d,\n", c);
+        p[i++] = c;
     }
-}
-void prs(char *s) {
-    const char tail[] = {34, 59, 10, 32, 32, 32, 32, 112, 114, 115, 40, 115, 41, 59, 10, 125};
-    fputs(s, stdout);
-    putchar(34);
-    puts_m(s);
-    puts(tail);
-}
-void main() {
-    char s[4096] = "#include <stdio.h>\n#include <string.h>\nvoid puts_m(const char *s) {\n    int i;\n    for(i=0; i<strlen(s); i++) {\n        if (s[i] == 10) {\n            putchar(92);\n            putchar(110);\n        } else {\n            putchar(s[i]);\n        }\n    }\n}\nvoid prs(char *s) {\n    const char tail[] = {34, 59, 10, 32, 32, 32, 32, 112, 114, 115, 40, 115, 41, 59, 10, 125};\n    fputs(s, stdout);\n    putchar(34);\n    puts_m(s);\n    puts(tail);\n}\nvoid main() {\n    char s[4096] = ";
-    prs(s);
+    printf("};\n");
+    printf("%s", p);
+    return 0;
 }
