@@ -1,18 +1,27 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char **argv) {
-    FILE *input;
-    char c;
-    char p[1250];
-    int i = 0;
+char p[] = " \
+#include <stdio.h>\n\
+#include <string.h>\n\
+void main() {\n\
+    int i;\n\
+    printf(\"char s[] = {\\n\");\n\
+    for (i = 0; i < sizeof(s); i++) {\n\
+        printf(\"\\t%d,\\n\", s[i]);\n\
+    }\n\
+    printf(\"};\\n\");\n\
+    printf(\"%s\", s);\n\
+}\n\
+";
 
-    if (argc != 2) return 0;
-    input = fopen(argv[1], "r");
+int main() {
+    int i = 0;
+    int len = strlen(p);
+
     printf("char s[] = {\n");
-    for ( c = fgetc(input); c != EOF; c = fgetc(input)) {
-        printf("\t%d,\n", c);
-        p[i++] = c;
+    for (i=0; i<len; i++) {
+        printf("\t%d,\n", p[i]);
     }
     printf("};\n");
     printf("%s", p);
