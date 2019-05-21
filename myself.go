@@ -2,11 +2,9 @@ package main
 
 import "fmt"
 
-var p string = `
+var p = `
 func main() {
-	fmt.Println("package main")
-	fmt.Println("import \"fmt\"")
-	fmt.Printf("var p string = string([]byte{")
+	fmt.Println("package main\nimport \"fmt\"\nvar p = string([]byte{")
 	for i := 0; i < len(p); i++ {
 		fmt.Printf("%v,", p[i])
 	}
@@ -15,9 +13,7 @@ func main() {
 }`
 
 func main() {
-	fmt.Println("package main")
-	fmt.Println("import \"fmt\"")
-	fmt.Printf(`var p string = string([]byte{`)
+	fmt.Println("package main\nimport \"fmt\"\nvar p = string([]byte{")
 	for i := 0; i < len(p); i++ {
 		fmt.Printf("%v,", p[i])
 	}
