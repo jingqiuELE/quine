@@ -8,8 +8,7 @@ func main() {
 	for i := 0; i < len(p); i++ {
 		fmt.Printf("%v,", p[i])
 	}
-	fmt.Printf("})")
-	fmt.Printf("%v", p)
+	fmt.Printf("})%v",p)
 }`
 
 func main() {
@@ -17,6 +16,5 @@ func main() {
 	for i := 0; i < len(p); i++ {
 		fmt.Printf("%v,", p[i])
 	}
-	fmt.Printf("})")
-	fmt.Printf("%v", p)
+	fmt.Printf("})%v", p)
 }
