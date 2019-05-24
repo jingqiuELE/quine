@@ -2,19 +2,19 @@ package main
 
 import "fmt"
 
-var p = `
+const p = `
 func main() {
-	fmt.Printf("package main\nimport \"fmt\"\nvar p = \"")
-	for i := 0; i < len(p); i++ {
-		fmt.Printf("\\x%02x", p[i])
+	fmt.Printf("package main\nimport \"fmt\"\nconst p = \"")
+	for _, c := range p {
+		fmt.Printf("\\x%02x", c)
 	}
 	fmt.Printf("\"%v",p)
 }`
 
 func main() {
-	fmt.Printf("package main\nimport \"fmt\"\nvar p = \"")
-	for i := 0; i < len(p); i++ {
-		fmt.Printf("\\x%02x", p[i])
+	fmt.Printf("package main\nimport \"fmt\"\nconst p = \"")
+	for _, c := range p {
+		fmt.Printf("\\x%02x", c)
 	}
 	fmt.Printf("\"%v", p)
 }
